@@ -1,7 +1,5 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: Cluster-Meli  # Define el nombre del clúster
-
 nodes:
   # Control planes
   - role: control-plane
@@ -10,29 +8,29 @@ nodes:
         hostPort: 8080
         protocol: TCP
     labels:
-      name: Meli-control-plane-1  # Etiqueta para identificar el nodo control-plane 1
+      name: Meli-control-plane-1
   - role: control-plane
     extraPortMappings:
       - containerPort: 80
         hostPort: 8081
         protocol: TCP
     labels:
-      name: Meli-control-plane-2  # Etiqueta para identificar el nodo control-plane 2
+      name: Meli-control-plane-2
   - role: control-plane
     extraPortMappings:
       - containerPort: 80
         hostPort: 8082
         protocol: TCP
     labels:
-      name: Meli-control-plane-3  # Etiqueta para identificar el nodo control-plane 3
+      name: Meli-control-plane-3
 
   # Workers
   - role: worker
     labels:
-      name: Meli-worker-1  # Etiqueta para identificar el nodo worker 1
+      name: Meli-worker-1
   - role: worker
     labels:
-      name: Meli-worker-2  # Etiqueta para identificar el nodo worker 2
+      name: Meli-worker-2
   - role: worker
     labels:
-      name: Meli-worker-3  # Etiqueta para identificar el nodo worker 3
+      name: Meli-worker-3
