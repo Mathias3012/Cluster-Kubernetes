@@ -1,13 +1,13 @@
-apiVersion: k3d.io/v1alpha4
+apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
   name: cluster-meli
 servers: 3  # Número de nodos "server" (control plane)
 agents: 3    # Número de nodos "agent" (workers)
 volumes:
-  - volume: k3d-storage-agent-0:/var/lib/rancher/k3s/storage@agent:0
-  - volume: k3d-storage-agent-1:/var/lib/rancher/k3s/storage@agent:1
-  - volume: k3d-storage-agent-2:/var/lib/rancher/k3s/storage@agent:2
+  - volume: k3d-storage-agent-0:/var/lib/rancher/k3s/storage@agent-0
+  - volume: k3d-storage-agent-1:/var/lib/rancher/k3s/storage@agent-1
+  - volume: k3d-storage-agent-2:/var/lib/rancher/k3s/storage@agent-2
 options:
   k3s:
     extraArgs:
