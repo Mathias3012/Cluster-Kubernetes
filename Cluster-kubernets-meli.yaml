@@ -1,12 +1,31 @@
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: cluster-meli
+servers: 3
+agents: 3
 nodes:
-# Control planes
-- role: control-plane
-- role: control-plane
-- role: control-plane
-
-# Workers
-- role: worker
-- role: worker
-- role: worker
+  - name: cluster-meli-server-0
+    role: server
+  - name: cluster-meli-server-1
+    role: server
+  - name: cluster-meli-server-2
+    role: server
+  - name: cluster-meli-agent-0
+    role: agent
+    volumeMounts:
+      - volume: k3d-storage-agent-0:/var/lib/rancher/k3s/storage
+  - name: cluster-meli-agent-1
+    role: agent
+    volumeMounts:
+      - volume: k3d-storage-agent-1:/var/lib/rancher/k3s/storage
+  - name: cluster-meli-agent-2
+    role: agent
+    volumeMounts:
+      - volume: k3d-storage-agent-2:/var/lib/rancher/k3s/storage
+options:
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters:
+          - server:*
